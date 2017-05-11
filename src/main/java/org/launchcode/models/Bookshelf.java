@@ -1,4 +1,4 @@
-package models;
+package org.launchcode.models;
 
 import java.util.HashMap;
 

@@ -5,8 +5,18 @@
     <title>Title</title>
 </head>
 <body>
+<table class="table" th:object="${bookshelf}">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+    </tr>
+    <tr th:each="book : *{books}">
+        <td th:text="${book.getKey()}"></td>
+        <td th:text="${book.getValue()}"></td>
+    </tr>
 
-<h1 th:text="${test}"></h1>
+
+</table>
 
 </body>
 </html>

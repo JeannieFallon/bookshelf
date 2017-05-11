@@ -1,5 +1,6 @@
 package org.launchcode.controllers;
 
+import org.launchcode.models.Bookshelf;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,11 @@ public class BookshelfController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
-        String test = "Bookshelf test";
-        model.addAttribute("test", test);
+        Bookshelf fiction = new Bookshelf("Fiction");
+        fiction.addBook("Silver Linings Playbook", "Matthew Quick");
+        fiction.addBook("Brave New World", "Aldous Huxley");
+        fiction.addBook("The Great Gatsby", "F. Scott Fitzgerald");
+        model.addAttribute("bookshelf", fiction);
         return "bookshelf/index";
     }
 }

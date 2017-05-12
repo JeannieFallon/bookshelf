@@ -3,6 +3,7 @@ package org.launchcode.controllers;
 import org.launchcode.models.Bookshelf;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,21 +14,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "bookshelf")
 public class BookshelfController {
 
+
+    Bookshelf bookshelf = new Bookshelf("Bookshelf");
+
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
-        Bookshelf fiction = new Bookshelf("Fiction");
-        fiction.addBook("Silver Linings Playbook", "Matthew Quick");
-        fiction.addBook("Brave New World", "Aldous Huxley");
-        fiction.addBook("The Great Gatsby", "F. Scott Fitzgerald");
-        model.addAttribute("bookshelf", fiction);
+        model.addAttribute("bookshelf", bookshelf);
         model.addAttribute("title", "Books");
         return "bookshelf/index";
     }
 
+
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("title","Add a Book");
+        model.addAttribute("bookTitle", "");
+        model.addAttribute("author", "");
         return "bookshelf/add";
+    }
+
+
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public String add(@ModelAttribute String title, String author, Model model) {
+        bookshelf.addBook(title, author);
+        model.addAttribute("bookshelf",bookshelf);
+        model.addAttribute("title","Books");
+        return "bookshelf/index";
     }
 
 

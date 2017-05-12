@@ -4,14 +4,14 @@
 <body class="container">
 <div th:replace="fragments :: titles"></div>
 <nav th:replace="fragments :: nav"></nav>
-<form method="post">
-    <div class="form-group" style="max-width:400px;" >
+<form method="post" th:object="${book}">
+    <div class="form-group" style="max-width:400px;">
         <label th:for="bookTitle">Title</label>
-        <input class="form-control" th:field="${bookTitle}"  />
+        <input class="form-control" th:field="*{bookTitle}" />
     </div>
     <div class="form-group" style="max-width:400px;">
         <label th:for="author">Author</label>
-        <input class="form-control" th:field="${author}" />
+        <input class="form-control" th:field="*{author}" />
     </div>
     <input type="submit" class="btn btn-primary" value="Add Book" />
 </form>

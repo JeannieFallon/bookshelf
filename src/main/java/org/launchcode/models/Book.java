@@ -5,25 +5,25 @@ package org.launchcode.models;
  */
 public class Book {
 
-    private String title;
+    private String bookTitle;
     private String author;
 
     public Book() {
 
     }
 
-    public Book(String title, String author) {
-        this.title = title;
+    public Book(String bookTitle, String author) {
+        this.bookTitle = bookTitle;
         this.author = author;
     }
 
-    public String getTitle() {
+    public String getBookTitle() {
 
-        return title;
+        return bookTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
     }
 
     public String getAuthor() {

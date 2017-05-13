@@ -4,17 +4,18 @@
 <body class="container">
 <div th:replace="fragments :: titles"></div>
 <nav th:replace="fragments :: nav"></nav>
-<table class="table" th:object="${bookshelf}">
+
+<p th:unless="${books} and ${books.size()}"><em>No books to display.</em></p>
+
+<table class="table">
     <tr>
         <th>Title</th>
         <th>Author</th>
     </tr>
-    <tr th:each="book : *{books}">
-        <td th:text="${book.getKey()}"></td>
-        <td th:text="${book.getValue()}"></td>
+    <tr th:each="book : ${books.keySet()}">
+        <td th:text="${book.getBookTitle}"></td>
+        <td th:text="${book.getAuthor()}"></td>
     </tr>
-
-
 </table>
 
 </body>

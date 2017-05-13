@@ -24,7 +24,7 @@ public class BookshelfController {
         return "bookshelf/index";
     }
 
-
+    //TODO: Complete add handler (GET and POST)
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("title","Add a Book");
@@ -38,7 +38,7 @@ public class BookshelfController {
         return "bookshelf/index";
     }
 
-
+    //TODO: Complete remove handler (GET and POST)
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String remove(Model model) {
         model.addAttribute("title","Remove a Book");

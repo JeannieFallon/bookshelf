@@ -5,24 +5,31 @@ package org.launchcode.models;
  */
 public class Book {
 
+
     private String bookTitle;
     private String author;
+    private int bookId;
+    private static int nextId = 1;
+
 
     public Book() {
-
+        bookId = nextId;
+        nextId++;
     }
 
+
     public Book(String bookTitle, String author) {
+        this();
         this.bookTitle = bookTitle;
         this.author = author;
     }
 
-    public String getBookTitle() {
 
+    public String getBookTitle() {
         return bookTitle;
     }
 
-    public void setTitle(String bookTitle) {
+    public void setBookTitle(String bookTitle) {
         this.bookTitle = bookTitle;
     }
 
@@ -33,4 +40,10 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    public int getBookId() {
+        return bookId;
+    }
+
+
 }

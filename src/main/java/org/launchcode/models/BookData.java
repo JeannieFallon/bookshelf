@@ -32,9 +32,9 @@ public class BookData {
 
     public static Book getBookById(int id) {
         Book theBook = null;
-        //will auto-boxing work here to make Integer match up with int? Or do I need to cast it?
         //iterate of HashMap's values and return corresponding key
         for(Map.Entry<Book,Integer> book : books.entrySet()) {
+            //will auto-boxing work here to make Integer match up with int? Or do I need to cast it?
             if(book.getValue() == id) {
                 theBook = book.getKey();
             }

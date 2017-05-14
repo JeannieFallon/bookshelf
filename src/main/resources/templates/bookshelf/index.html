@@ -13,7 +13,7 @@
         <th>Author</th>
     </tr>
     <tr th:each="book : ${books.keySet()}">
-        <td th:text="${book.getBookTitle}"></td>
+        <td th:text="${book.getBookTitle()}"></td>
         <td th:text="${book.getAuthor()}"></td>
     </tr>
 </table>

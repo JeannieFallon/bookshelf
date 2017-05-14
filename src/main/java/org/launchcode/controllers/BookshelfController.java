@@ -28,14 +28,15 @@ public class BookshelfController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("title","Add a Book");
+        model.addAttribute(new Book());
         return "bookshelf/add";
     }
 
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(@ModelAttribute Book newBook, Model model) {
-        model.addAttribute("title", "Bookshelf");
-        return "bookshelf/index";
+        BookData.addBook(newBook.getBookTitle(), newBook.getAuthor());
+        return "redirect:";
     }
 
     //TODO: Complete remove handler (GET and POST)

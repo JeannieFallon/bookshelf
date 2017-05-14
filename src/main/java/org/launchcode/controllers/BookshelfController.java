@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by jeannie on 5/10/17.
@@ -24,7 +25,6 @@ public class BookshelfController {
         return "bookshelf/index";
     }
 
-    //TODO: Complete add handler (GET and POST)
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("title","Add a Book");
@@ -43,7 +43,19 @@ public class BookshelfController {
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String remove(Model model) {
         model.addAttribute("title","Remove a Book");
+        model.addAttribute("books", BookData.getAllBooks());
         return "bookshelf/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String remove(@RequestParam int[] bookIds) {
+        for(int bookId : bookIds) {
+            // find book using BookData method
+            Book bookToRemove = BookData.getBookById(bookId);
+            // remove book from BookData's books hashmap
+            BookData.removeBook(bookToRemove);
+        }
+        return "redirect:/bookshelf";
     }
 
 

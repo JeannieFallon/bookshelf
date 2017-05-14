@@ -5,5 +5,27 @@
 <div th:replace="fragments :: titles"></div>
 <nav th:replace="fragments :: nav"></nav>
 
+<p th:unless="${books} and ${books.size()}"><em>No books to remove.</em></p>
+
+
+<form method="post" style="max-width:400px;">
+
+    <div th:each="book : ${books.keySet()}" class="checkbox">
+        <!-- use id field of Book object rather than HashMap value
+        HashMap will be reconfigured to include enum Genre as values -->
+        <input type="checkbox" name="bookIds" th:value="${book.bookId}" th:id="${book.bookId}" />
+        <label th:for="${book.bookId}" th:text="|${book.bookTitle} by ${book.author}|" />
+
+<!--
+        <p th:text="|${bean.field} ! ${bean.field}|">Static content</p>
+    -->
+    </div>
+
+    <input type="submit" value="Remove Books" />
+
+
+
+</form>
+
 </body>
 </html>

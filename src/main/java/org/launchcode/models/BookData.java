@@ -10,7 +10,9 @@ import java.util.TreeSet;
  */
 public class BookData {
 
+
     // TODO: implement .equals() for Book (here or in Book class?)
+    //use HashMap to eventually pair books with enum categories; temporarily use bookId for value
     static HashMap<Book,Integer> books = new HashMap<Book, Integer>();
 
     //use List to allow for duplicate title entries

@@ -39,7 +39,6 @@ public class BookshelfController {
         return "redirect:";
     }
 
-    //TODO: Complete remove handler (GET and POST)
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String remove(Model model) {
         model.addAttribute("title","Remove a Book");
@@ -58,21 +57,21 @@ public class BookshelfController {
         return "redirect:/bookshelf";
     }
 
-
+    //TODO: Dislpay Set of authors
     @RequestMapping(value = "authors", method = RequestMethod.GET)
     public String authors(Model model) {
         model.addAttribute("title","Authors");
         return "bookshelf/authors";
     }
 
-
+    //TODO: Display List of bookTitles
     @RequestMapping(value = "titles", method = RequestMethod.GET)
     public String titles(Model model) {
         model.addAttribute("title","Titles");
         return "bookshelf/titles";
     }
 
-
+    //TODO: Complete About page
     @RequestMapping(value = "about", method = RequestMethod.GET)
     public String about(Model model) {
         model.addAttribute("title","About");

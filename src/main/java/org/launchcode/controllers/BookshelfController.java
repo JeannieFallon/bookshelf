@@ -68,7 +68,6 @@ public class BookshelfController {
         return "bookshelf/authors";
     }
 
-    //TODO: Display List of bookTitles
     @RequestMapping(value = "titles", method = RequestMethod.GET)
     public String titles(Model model) {
         ArrayList<String> bookTitles = BookData.getAllBookTitles();
@@ -77,7 +76,6 @@ public class BookshelfController {
         return "bookshelf/titles";
     }
 
-    //TODO: Complete About page
     @RequestMapping(value = "about", method = RequestMethod.GET)
     public String about(Model model) {
         model.addAttribute("title","About");

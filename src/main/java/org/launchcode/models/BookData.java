@@ -11,7 +11,7 @@ import java.util.TreeSet;
 public class BookData {
 
 
-    // TODO: implement .equals() for Book (here or in Book class?)
+    // TODO: rewrite HashMap books to pair Book with Genre
     //use HashMap to eventually pair books with enum categories; temporarily use bookId for value
     static HashMap<Book,Integer> books = new HashMap<Book, Integer>();
 
@@ -36,6 +36,7 @@ public class BookData {
         Book theBook = null;
         //iterate over HashMap's values and return corresponding key
         for(Map.Entry<Book,Integer> book : books.entrySet()) {
+            //TODO: rewrite with book.getBookId() after Genre implemented
             if(book.getValue() == id) {
                 theBook = book.getKey();
             }

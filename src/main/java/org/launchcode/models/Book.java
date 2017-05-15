@@ -10,6 +10,7 @@ public class Book {
     private String author;
     private int bookId;
     private static int nextId = 1;
+    //TODO: add enum class Genres
 
 
     public Book() {
@@ -44,6 +45,8 @@ public class Book {
     public int getBookId() {
         return bookId;
     }
+
+    //TODO: Override .equals()
 
 
 }

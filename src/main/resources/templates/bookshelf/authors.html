@@ -5,12 +5,11 @@
 <div th:replace="fragments :: titles"></div>
 <nav th:replace="fragments :: nav"></nav>
 
+<p class="text-center" th:unless="${authors} and ${authors.size()}"><em>No authors to display.</em></p>
 
 <ul th:each="author : ${authors}">
     <li th:text="${author}" />
 </ul>
-
-<p th:unless="${authors} and ${authors.size()}"><em>No authors to display.</em></p>
 
 </body>
 </html>

@@ -5,12 +5,11 @@
 <div th:replace="fragments :: titles"></div>
 <nav th:replace="fragments :: nav"></nav>
 
+<p class="text-center" th:unless="${bookTitles} and ${bookTitles.size()}"><em>No titles to display.</em></p>
 
 <ul th:each="bookTitle : ${bookTitles}">
     <em><li th:text="${bookTitle}" /></em>
 </ul>
-
-<p th:unless="${bookTitles} and ${bookTitles.size()}"><em>No titles to display.</em></p>
 
 </body>
 </html>

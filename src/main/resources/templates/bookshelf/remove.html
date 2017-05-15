@@ -5,8 +5,7 @@
 <div th:replace="fragments :: titles"></div>
 <nav th:replace="fragments :: nav"></nav>
 
-<p th:unless="${books} and ${books.size()}"><em>No books to remove.</em></p>
-
+<p class="text-center" th:unless="${books} and ${books.size()}"><em>No books to remove.</em></p>
 
 <form method="post" style="max-width:400px;">
 

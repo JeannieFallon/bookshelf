@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.TreeSet;
+
 /**
  * Created by jeannie on 5/10/17.
  */
@@ -57,10 +59,12 @@ public class BookshelfController {
         return "redirect:/bookshelf";
     }
 
-    //TODO: Dislpay Set of authors
+    //TODO: Display Set of authors
     @RequestMapping(value = "authors", method = RequestMethod.GET)
     public String authors(Model model) {
+        TreeSet<String> authors = BookData.getAllAuthors();
         model.addAttribute("title","Authors");
+        model.addAttribute("authors",authors);
         return "bookshelf/authors";
     }
 

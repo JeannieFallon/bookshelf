@@ -34,9 +34,8 @@ public class BookData {
 
     public static Book getBookById(int id) {
         Book theBook = null;
-        //iterate of HashMap's values and return corresponding key
+        //iterate over HashMap's values and return corresponding key
         for(Map.Entry<Book,Integer> book : books.entrySet()) {
-            //will auto-boxing work here to make Integer match up with int? Or do I need to cast it?
             if(book.getValue() == id) {
                 theBook = book.getKey();
             }
@@ -49,7 +48,7 @@ public class BookData {
         return books;
     }
 
-    //iterate over HashMap's keyset and each key's bookTile field to ArrayList
+    //iterate over HashMap's keyset and add each key's bookTile field to ArrayList
     public static ArrayList<String> getAllBookTitles() {
         for(Book book : books.keySet()) {
             bookTitles.add(book.getBookTitle());
@@ -57,10 +56,10 @@ public class BookData {
         return bookTitles;
     }
 
-    //iterate over HashMap's keyset and each key's author field to TreeSet
+    //iterate over HashMap's keyset and add each key's author field to TreeSet
     public static TreeSet<String> getAllAuthors() {
         for(Book book : books.keySet()) {
-            authors.add(book.getBookTitle());
+            authors.add(book.getAuthor());
         }
         return authors;
     }

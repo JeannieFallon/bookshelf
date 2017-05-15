@@ -15,15 +15,9 @@
         HashMap will be reconfigured to include enum Genre as values -->
         <input type="checkbox" name="bookIds" th:value="${book.bookId}" th:id="${book.bookId}" />
         <label th:for="${book.bookId}" th:text="|${book.bookTitle} by ${book.author}|" />
-
-<!--
-        <p th:text="|${bean.field} ! ${bean.field}|">Static content</p>
-    -->
     </div>
 
-    <input type="submit" value="Remove Books" />
-
-
+    <input type="submit" class="btn btn-danger" value="Remove Books" />
 
 </form>
 

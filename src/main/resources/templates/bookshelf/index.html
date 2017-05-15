@@ -5,18 +5,20 @@
 <div th:replace="fragments :: titles"></div>
 <nav th:replace="fragments :: nav"></nav>
 
-<p th:unless="${books} and ${books.size()}"><em>No books to display.</em></p>
 
 <table class="table">
     <tr>
-        <th>Title</th>
-        <th>Author</th>
+        <th class="col-md-4">Author</th>
+        <th class="col-md-8">Title</th>
     </tr>
     <tr th:each="book : ${books.keySet()}">
-        <td th:text="${book.getBookTitle()}"></td>
         <td th:text="${book.getAuthor()}"></td>
+        <td th:text="${book.getBookTitle()}"></td>
     </tr>
 </table>
+
+<p th:unless="${books} and ${books.size()}"><em>No books to display.</em></p>
+
 
 </body>
 </html>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.TreeSet;
 
 /**
@@ -59,7 +60,6 @@ public class BookshelfController {
         return "redirect:/bookshelf";
     }
 
-    //TODO: Display Set of authors
     @RequestMapping(value = "authors", method = RequestMethod.GET)
     public String authors(Model model) {
         TreeSet<String> authors = BookData.getAllAuthors();
@@ -71,6 +71,8 @@ public class BookshelfController {
     //TODO: Display List of bookTitles
     @RequestMapping(value = "titles", method = RequestMethod.GET)
     public String titles(Model model) {
+        ArrayList<String> bookTitles = BookData.getAllBookTitles();
+        model.addAttribute("bookTitles", bookTitles);
         model.addAttribute("title","Titles");
         return "bookshelf/titles";
     }

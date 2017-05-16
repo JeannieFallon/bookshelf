@@ -5,7 +5,7 @@ package org.launchcode.models;
  */
 public class Book {
 
-
+    //TODO: add validation
     private String bookTitle;
     private String author;
     private int bookId;

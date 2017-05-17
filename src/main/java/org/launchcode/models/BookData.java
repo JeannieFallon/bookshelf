@@ -11,9 +11,7 @@ import java.util.TreeSet;
 public class BookData {
 
 
-    // TODO: rewrite HashMap books to pair Book with Genre
-    //use HashMap to eventually pair books with enum categories; temporarily use bookId for value
-    static HashMap<Book,Integer> books = new HashMap<Book, Integer>();
+    static HashMap<String,Book> books = new HashMap<String,Book>();
 
     //use List to allow for duplicate title entries
     static ArrayList<String> bookTitles = new ArrayList<String>();
@@ -22,45 +20,58 @@ public class BookData {
     static TreeSet<String> authors = new TreeSet<String>();
 
 
-    public static void addBook(String bookTitle, String author) {
-        Book newBook = new Book(bookTitle, author);
-        books.put(newBook, newBook.getBookId());
+    public static void addBook(String isbn, String bookTitle, String author) {
+        Book newBook = new Book(isbn, bookTitle, author);
+        books.put(newBook.getIsbn(),newBook);
     }
 
 
-    public static void removeBook(Book book) {
-        books.remove(book);
+    public static void removeBook(String isbn) {
+        books.remove(isbn);
     }
 
     public static Book getBookById(int id) {
         Book theBook = null;
-        //iterate over HashMap's values and return corresponding key
-        for(Map.Entry<Book,Integer> book : books.entrySet()) {
-            //TODO: rewrite with book.getBookId() after Genre implemented
-            if(book.getValue() == id) {
-                theBook = book.getKey();
+        //iterate over HashMap entries, pulling id field from each value
+        for(Map.Entry<String,Book> book : books.entrySet()) {
+            int bookId = book.getValue().getBookId();
+            if(bookId == id) {
+                theBook = book.getValue();
+                break;
+            }
+        }
+        return theBook;
+    }
+
+    public static Book getBookByIsbn(String isbn) {
+        Book theBook = null;
+        //iterate over HashMap's keyset
+        for(String isbnKey : books.keySet()) {
+            if(isbnKey.equals(isbn)) {
+                theBook = books.get(isbn);
+                break;
             }
         }
         return theBook;
     }
 
 
-    public static HashMap<Book,Integer> getAllBooks() {
+    public static HashMap<String,Book> getAllBooks() {
         return books;
     }
 
-    //iterate over HashMap's keyset and add each key's bookTile field to ArrayList
+    //iterate over HashMap entries, pulling bookTitle field from each value
     public static ArrayList<String> getAllBookTitles() {
-        for(Book book : books.keySet()) {
-            bookTitles.add(book.getBookTitle());
+        for(Map.Entry<String,Book> book : books.entrySet()) {
+            bookTitles.add(book.getValue().getBookTitle());
         }
         return bookTitles;
     }
 
-    //iterate over HashMap's keyset and add each key's author field to TreeSet
+    //iterate over HashMap entries, pulling bookTitle field from each value
     public static TreeSet<String> getAllAuthors() {
-        for(Book book : books.keySet()) {
-            authors.add(book.getAuthor());
+        for(Map.Entry<String,Book> book : books.entrySet()) {
+            authors.add(book.getValue().getAuthor());
         }
         return authors;
     }

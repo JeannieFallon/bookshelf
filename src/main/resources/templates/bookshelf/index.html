@@ -12,9 +12,9 @@
         <th class="col-md-4">Author</th>
         <th class="col-md-8">Title</th>
     </tr>
-    <tr th:each="book : ${books.keySet()}">
-        <td th:text="${book.getAuthor()}"></td>
-        <td th:text="${book.getBookTitle()}"></td>
+    <tr th:each="book : ${books.entrySet()}">
+        <td th:text="${book.getValue().getAuthor()}"></td>
+        <td th:text="${book.getValue().getBookTitle()}"></td>
     </tr>
 </table>
 

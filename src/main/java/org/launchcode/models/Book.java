@@ -6,11 +6,11 @@ package org.launchcode.models;
 public class Book {
 
     //TODO: add validation
+    private String isbn;
     private String bookTitle;
     private String author;
     private int bookId;
     private static int nextId = 1;
-    //TODO: add enum class Genres
 
 
     public Book() {
@@ -19,12 +19,20 @@ public class Book {
     }
 
 
-    public Book(String bookTitle, String author) {
+    public Book(String isbn, String bookTitle, String author) {
         this();
+        this.isbn = isbn;
         this.bookTitle = bookTitle;
         this.author = author;
     }
 
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
     public String getBookTitle() {
         return bookTitle;

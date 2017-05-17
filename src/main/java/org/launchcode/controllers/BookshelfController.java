@@ -38,7 +38,7 @@ public class BookshelfController {
     //TODO: add validation
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(@ModelAttribute Book newBook, Model model) {
-        BookData.addBook(newBook.getBookTitle(), newBook.getAuthor());
+        BookData.addBook(newBook.getIsbn(), newBook.getBookTitle(), newBook.getAuthor());
         return "redirect:";
     }
 
@@ -55,7 +55,7 @@ public class BookshelfController {
             // find book using BookData method
             Book bookToRemove = BookData.getBookById(bookId);
             // remove book from BookData's books hashmap
-            BookData.removeBook(bookToRemove);
+            BookData.removeBook(bookToRemove.getIsbn());
         }
         return "redirect:/bookshelf";
     }

@@ -9,11 +9,11 @@
 
 <form method="post" style="max-width:400px;">
 
-    <div th:each="book : ${books.keySet()}" class="checkbox">
-        <!-- use id field of Book object rather than HashMap value
-        HashMap will be reconfigured to include enum Genre as values -->
-        <input type="checkbox" name="bookIds" th:value="${book.bookId}" th:id="${book.bookId}" />
-        <label th:for="${book.bookId}" th:text="|${book.bookTitle} by ${book.author}|" />
+    <div th:each="book : ${books.entrySet()}" class="checkbox">
+        <input type="checkbox" name="bookIds" th:value="${book.getValue().bookId}"
+               th:id="${book.getValue().bookId}" />
+        <label th:for="${book.getValue().bookId}"
+               th:text="|${book.getValue().bookTitle}  by  ${book.getValue().author}|" />
     </div>
 
     <input type="submit" class="btn btn-danger" value="Remove Books" />

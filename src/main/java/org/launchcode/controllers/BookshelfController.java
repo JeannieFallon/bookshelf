@@ -45,7 +45,15 @@ public class BookshelfController {
             return "bookshelf/add";
         }
 
-        BookData.addBook(newBook.getIsbn(), newBook.getBookTitle(), newBook.getAuthor());
+        String newBookIsbn = newBook.getIsbn();
+
+        if(BookData.isDuplicateIsbn(newBookIsbn)) {
+            model.addAttribute("title","Add a Book");
+            model.addAttribute("duplicateIsbn","ISBN already exists.");
+            return "bookshelf/add";
+        }
+
+        BookData.addBook(newBookIsbn, newBook.getBookTitle(), newBook.getAuthor());
         return "redirect:";
     }
 

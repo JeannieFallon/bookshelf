@@ -21,6 +21,7 @@
         <label th:for="isbn">ISBN</label>
         <input class="form-control" th:field="*{isbn}" />
         <span th:errors="*{isbn}" class="error"></span>
+        <span th:text="${duplicateIsbn}" style="color:red;"></span>
     </div>
 
     <input type="submit" class="btn btn-primary" value="Add Book" />

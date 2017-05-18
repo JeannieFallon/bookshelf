@@ -25,7 +25,6 @@ public class BookData {
         books.put(newBook.getIsbn(),newBook);
     }
 
-
     public static void removeBook(String isbn) {
         books.remove(isbn);
     }
@@ -43,16 +42,14 @@ public class BookData {
         return theBook;
     }
 
-    public static Book getBookByIsbn(String isbn) {
-        Book theBook = null;
-        //iterate over HashMap's keyset
+    //check upon input if ISBN already exists in books hashmap
+    public static boolean isDuplicateIsbn(String isbn) {
         for(String isbnKey : books.keySet()) {
             if(isbnKey.equals(isbn)) {
-                theBook = books.get(isbn);
-                break;
+                return true;
             }
         }
-        return theBook;
+        return false;
     }
 
 

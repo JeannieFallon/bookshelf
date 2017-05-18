@@ -7,19 +7,20 @@
 
 
 <form method="post" style="max-width:400px;" th:object="${book}">
-    <!-- TODO: add validation -->
     <div class="form-group">
         <label th:for="bookTitle">Title</label>
         <input class="form-control" th:field="*{bookTitle}" />
+        <span th:errors="*{bookTitle}" class="error"></span>
     </div>
-
     <div class="form-group">
         <label th:for="author">Author</label>
         <input class="form-control" th:field="*{author}" />
+        <span th:errors="*{author}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="isbn">ISBN</label>
         <input class="form-control" th:field="*{isbn}" />
+        <span th:errors="*{isbn}" class="error"></span>
     </div>
 
     <input type="submit" class="btn btn-primary" value="Add Book" />

@@ -1,14 +1,26 @@
 package org.launchcode.models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by jeannie on 5/11/17.
  */
 public class Book {
 
-    //TODO: add validation
+
+    @NotNull
+    @Size(min = 1, max = 10)
     private String isbn;
+
+    @NotNull
+    @Size(min = 1, max = 100)
     private String bookTitle;
+
+    @NotNull
+    @Size(min = 1, max = 50)
     private String author;
+
     private int bookId;
     private static int nextId = 1;
 

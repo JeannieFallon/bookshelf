@@ -4,11 +4,13 @@ import org.launchcode.models.Book;
 import org.launchcode.models.BookData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
@@ -37,7 +39,13 @@ public class BookshelfController {
 
     //TODO: add validation
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Book newBook, Model model) {
+    public String add(@ModelAttribute @Valid Book newBook, Errors errors, Model model) {
+
+        if(errors.hasErrors()) {
+            model.addAttribute("title","Add a Book");
+            return "bookshelf/add";
+        }
+
         BookData.addBook(newBook.getIsbn(), newBook.getBookTitle(), newBook.getAuthor());
         return "redirect:";
     }

@@ -37,7 +37,6 @@ public class BookshelfController {
         return "bookshelf/add";
     }
 
-    //TODO: add validation
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(@ModelAttribute @Valid Book newBook, Errors errors, Model model) {
 
